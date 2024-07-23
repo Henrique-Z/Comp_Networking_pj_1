@@ -7,12 +7,12 @@ def start_server(port):
 	"""instancia e inicia um servidor TCP."""
 
 	# requisita à API do SO uma conexão:
-	socket_server = socket.socket(socket.AF_INET,	 #	   AF_INET: conexão do tipo IPV4
+	server_socket = socket.socket(socket.AF_INET,	 #	   AF_INET: conexão do tipo IPV4
 								  socket.SOCK_STREAM # SOCK_STREAM: adota o protocolo TCP
 								  )
-	print(socket_server)
+	print(server_socket)
 
-	# pega o atributo de nome do objeto 'socket_server':
+	# pega o atributo de nome do objeto 'server_socket':
 	server_name = socket.gethostname()
 	print("Nome do servidor: ", server_name)
 
@@ -23,6 +23,9 @@ def start_server(port):
 
 	# impõe que o servidor de ip 'server_ip' apenas "escutará" à porta 'port':
 	# AF_INET address family:
-	socket_server.bind( (server_ip, port) )
+	server_socket.bind( (server_ip, port) )
 
-	return socket_server
+	# permite que o servidor aceite conexões:
+	server_socket.listen(1)
+
+	return server_socket, server_ip
