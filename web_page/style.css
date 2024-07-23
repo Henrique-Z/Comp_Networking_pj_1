@@ -2,8 +2,8 @@
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css); /* Fira Code: */
 
 :root {
-    --true-dark:  #000000;
-    --true-green: #00ff00;
+	--true-dark:  #000000;
+	--true-green: #00ff00;
 	--font-size: 13px;		  /* 16px */
 	--container-width: 650px; /* 600px */
 	--thumb-width: 630px;
@@ -15,7 +15,7 @@
 }
 
 @supports (font-variant-ligatures: common-ligatures) {
-    * { font-feature-settings: "cv13", "cv14", "cv16", "cv17", "cv18", "cv20", "cv21", "cv30", "ss01", "ss04", "ss06", "ss09",
+	* { font-feature-settings: "cv13", "cv14", "cv16", "cv17", "cv18", "cv20", "cv21", "cv30", "ss01", "ss04", "ss06", "ss09",
 		/* less common: */
 		"cv25",  /*  .-    */
 		"cv26",  /*  :-    */
@@ -56,14 +56,14 @@ a:active, a:hover {
 
 .container {
 	max-width: var(--container-width);
-    margin: auto;
+	margin: auto;
 	border: solid 1px red;
 	/*
 	font-size: vw;
 	*/
 }
 
-.content {	
+.content {
 	padding: 10px; /* 13px ? */
 	/*
 	float: left;
