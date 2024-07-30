@@ -1,0 +1,80 @@
+
+@import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css); /* Fira Code: */
+
+:root {
+	--true-dark:  #000000;
+	--true-green: #00ff00;
+	--font-size: 13px;		  /* 16px */
+	--container-width: 650px; /* 600px */
+	--thumb-width: 630px;
+}
+
+
+@supports (font-variation-settings: normal) {
+	body { font-family: 'Fira Code VF', monospace; }
+}
+
+@supports (font-variant-ligatures: common-ligatures) {
+	* { font-feature-settings: "cv13", "cv14", "cv16", "cv17", "cv18", "cv20", "cv21", "ss01", "ss04", "ss06", "ss09",
+		/* less common: */
+		"cv25",  /*  .-    */
+		"cv26",  /*  :-    */
+		"cv27",  /*  []    */
+		"cv28",  /*  {. .} */
+		"cv32";} /*  .=    */
+}
+
+/*
+[ ] talvez retirar:
+"cv20":  <=
+"cv21":  =<
+o que causa o comportamento: \\
+*/
+
+@media screen and (max-width: var(--container-width)) {
+	.content { width: 100%; }
+}
+
+body {
+	background-color: var(--true-dark);
+	color: var(--true-green);
+	font-family: 'Fira Code', monospace;
+	font-size: var(--font-size);
+	/*
+	box-sizing: border-box;
+	*/
+	margin: 0;
+}
+
+a:link, a:visited {
+	color: var(--true-green);
+}
+
+a:active, a:hover {
+	color: white;
+}
+
+.container {
+	max-width: var(--container-width);
+	margin: auto;
+	border: solid 1px red;
+	/*
+	font-size: vw;
+	*/
+}
+
+.content {
+	padding: 10px; /* 13px ? */
+	/*
+	float: left;
+	font-size: vw;
+	*/
+}
+
+/*-------------------------------*/
+
+.thumbnail {
+	max-width: var(--thumb-width);
+}
+
+.preview-container {}
