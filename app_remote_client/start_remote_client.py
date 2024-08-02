@@ -1,22 +1,29 @@
-"""Módulo que implementa função para instanciar e iniciar um cliente TCP."""
+import http.client
 
-import socket
 
-def start_remote_client(server_ip, port, http_request):
-    """instancia e inicia um cliente TCP."""
+def start_remote_client(host = None, port = 4400):
 
-    socket_client = socket.socket(socket.AF_INET,    # ...
-                                  socket.SOCK_STREAM # ...
-                                  )
-    print(socket_client)
+	if host is None:
+		raise TypeError
 
-    tcp_addrs = ( (server_ip, port) )
-    socket_client.connect(tcp_addrs)
-    socket_client.send( bytes(http_request, "utf-8") )
-    msg = socket_client.recv(port)
-    print("client msg:", msg)
+	conn = http.client.HTTPConnection(host, port)
 
-    socket_client.close()
-    print("client:", socket_client)
+	# estabelece os parâmetros necessários para estabelecer o `request`:
+	conn.request("GET", "/html_templates/index.html")
 
-    return socket_client
+	# encaminha o `request` e receber a `response`:
+	http_response = conn.getresponse() # variável do tipo `HTTPResponse`
+	print("[>>> cliente:] status da resposta:", http_response.status)
+	print("[>>> cliente:] reason da resposta:", http_response.reason)
+
+	response_data = http_response.read().decode()
+	print("[>>> cliente:] dados na resposta:", response_data)
+
+	response_headers = http_response.getheaders()
+	if response_headers:
+		print("[>>> cliente:] headers da resposta:\n\t",
+			  response_headers[0][0], ":",
+			  response_headers[0][1]
+			  )
+
+	return conn, response_data
