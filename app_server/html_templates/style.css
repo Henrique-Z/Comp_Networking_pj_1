@@ -54,27 +54,9 @@ a:active, a:hover {
 	color: white;
 }
 
-.container {
+#container {
 	max-width: var(--container-width);
 	margin: auto;
 	border: solid 1px red;
-	/*
-	font-size: vw;
-	*/
-}
-
-.content {
 	padding: 10px; /* 13px ? */
-	/*
-	float: left;
-	font-size: vw;
-	*/
 }
-
-/*-------------------------------*/
-
-.thumbnail {
-	max-width: var(--thumb-width);
-}
-
-.preview-container {}

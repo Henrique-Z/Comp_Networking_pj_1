@@ -4,7 +4,6 @@ import socket
 
 
 def start_IPv4_server(port = 4400):
-	"""instancia e inicia um servidor TCP."""
 
 	# request connection to OS API:
 	server_socket = socket.socket(socket.AF_INET,	 # IPV4
