@@ -1,8 +1,10 @@
-import os
+
 import webbrowser
+import threading
+import os
 
 from start_remote_client import start_remote_client
-from start_local_server import start_local_server, timestamp
+from start_local_server import start_local_server, accept_browser_conn, timestamp
 
 
 HOST = "192.168.43.101" # wlp1s0 IPv4 do servidor primário
@@ -18,7 +20,13 @@ STYLE_PATH = TEMP_DIR_PATH + "/style.css"
 conn, response_data = start_remote_client(HOST, PORT)
 
 # cria servidor web local:
-local_server, local_server_ip = start_local_server("localhost", LH_PORT)
+local_server_socket, local_server_ip = start_local_server(LH_PORT)
+
+
+# inicia serviço do servidor em nova thread:
+browser_conn_thread = threading.Thread(target = accept_browser_conn, args = [local_server_socket, conn])
+browser_conn_thread.start()
+
 
 if not os.path.exists(TEMP_DIR_PATH):
 	# cria diretório temporário para o armazenamento dos
@@ -62,7 +70,7 @@ except webbrowser.Error as e:
 #local_server.server_close() # fecha o socket
 
 # encerra a conexão com o servidor primário:
-print(f"{local_server_ip} - - {timestamp()} >>> localserver: encerrando a conexão com o servidor...")
+print(f"_________ - - {timestamp()} >>> localserver: encerrando a conexão com o servidor...")
 conn.close()
 
 # remove templetes html:
