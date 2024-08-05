@@ -4,9 +4,9 @@ import time
 def timestamp():
 	# retorna data e hora local em string formatada:
 	return time.strftime(
-        "[%d-%m-%Y  %H:%M:%S]",
-        time.localtime()
-        )
+		"[%d-%m-%Y  %H:%M:%S]",
+		time.localtime()
+		)
 
 def start_remote_client(host = None, port = 4400):
 
