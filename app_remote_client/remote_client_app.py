@@ -7,11 +7,11 @@ from start_remote_client import start_remote_client
 from start_local_server import start_local_server, accept_browser_conn, timestamp
 
 
-HOST = "192.168.43.101" # wlp1s0 IPv4 do servidor primário
+HOST = "192.168.206.101" # wlp1s0 IPv4 do servidor primário
 PORT = 4400				 # para conexão com servidor primário
 LH_PORT = 8000			 # para conexão com browser
 
-TEMP_DIR_PATH = "server_files"
+TEMP_DIR_PATH = "html_templates"
 INDEX_PATH = TEMP_DIR_PATH + "/index.html"
 STYLE_PATH = TEMP_DIR_PATH + "/style.css"
 

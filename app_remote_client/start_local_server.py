@@ -26,17 +26,24 @@ def handle_browser_request(browser_conn, main_conn):
 	
 	# supondo que requisicoes do browser não são apenas do tipo "GET":
 	if request_header[0] is "GET":
+		print('ENTROU EM: request_header[0] is "GET"')
+
+	if request_header[0] == "GET":
 		REQUESTED_FILE_PATH = request_header[1]		# python walrus operator!?
 		if not os.path.exists(REQUESTED_FILE_PATH): # python walrus operator!?
+			print(REQUESTED_FILE_PATH.split("/"))
+			print(REQUESTED_FILE_PATH.split("/"))
+			#FILE_PATH = REQUESTED_FILE_PATH.replace("")
+			#/
 			# tratar path para requisitar ao servidor primário
 			#     ----> em outra variável
 			#
 			# ignorar favicon request
-
+			REQUESTED_FILE_PATH.pop(0)
 			main_conn.request("GET", REQUESTED_FILE_PATH) # !
 			http_response = main_conn.getresponse()
-			print(f"{local_server_ip} - - {timestamp()} >>> localserver: status da resposta:", http_response.status) #!
-			print(f"{local_server_ip} - - {timestamp()} >>> localserver: motivo da resposta:", http_response.reason) #!
+			#print(f"{local_server_ip} - - {timestamp()} >>> localserver: status da resposta:", http_response.status) #!
+			#print(f"{local_server_ip} - - {timestamp()} >>> localserver: motivo da resposta:", http_response.reason) #!
 
 			response_data = http_response.read() # file bit-stream data
 
