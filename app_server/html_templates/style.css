@@ -2,11 +2,9 @@
 @import url(https://cdn.jsdelivr.net/npm/firacode@6.2.0/distr/fira_code.css); /* Fira Code: */
 
 :root {
-	--true-dark:  #000000;
-	--true-green: #00ff00;
-	--font-size: 13px;		  /* 16px */
-	--container-width: 650px; /* 600px */
-	--thumb-width: 630px;
+	--true-green: #7fff00;
+	--font-size: 15px;
+	--container-width: 650px;
 }
 
 
@@ -36,7 +34,7 @@ o que causa o comportamento: \\
 }
 
 body {
-	background-color: var(--true-dark);
+	background-color: #333333;
 	color: var(--true-green);
 	font-family: 'Fira Code', monospace;
 	font-size: var(--font-size);
@@ -51,12 +49,14 @@ a:link, a:visited {
 }
 
 a:active, a:hover {
-	color: white;
+	color: #eeeeec;
 }
 
 #container {
 	max-width: var(--container-width);
 	margin: auto;
+	/*
 	border: solid 1px red;
-	padding: 10px; /* 13px ? */
+	*/
+	padding: 10px;
 }
